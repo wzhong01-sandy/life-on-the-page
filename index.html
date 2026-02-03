@@ -53,6 +53,7 @@
             line-height: 1.4;
             font-size: 12px;
             max-width: 90%;
+            transition: opacity 0.25s ease;
         }
 
         .image-box {
@@ -78,6 +79,92 @@
             z-index: 100;
             width: calc((95% - 75px) / 6 * 2 + 15px);
         }
+
+        #about-page {
+            position: fixed;
+            top: 135px;
+            left: 0;
+            width: 100vw;
+            height: calc(100vh - 120px);
+            background-image: url('2-1.jpg');
+            background-size: cover;
+            background-position: center;
+            display: none;
+            z-index: 5;
+            overflow-y: auto;
+        }
+
+        #about-page::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            padding: 15px;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        
+        .about-text {
+            max-width: 90%;
+            z-index: 5;
+        }
+
+        .about-main {
+            grid-column: 5;
+            align-self: start;
+            margin-top: 15px;
+        }
+
+        .about-footnote {
+            grid-row: 5;
+            align-self: end;
+            margin-bottom: 15px;
+        }
+
+        #about-page .about-main {
+            color: rgb(237, 237, 235);
+        }
+
+        #about-page .about-footnote {
+            color: rgb(237, 237, 235);
+            opacity: 60%;
+            font-size: 10px;
+        }
+
+        .nav .title,.nav .about {
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .nav .title::after,
+        .nav .about::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            height: 1.4px;
+            background: black;
+            transition: width 0.3s ease;
+            opacity: 0;
+        }
+
+        .nav .title:hover::after,
+        .nav .about:hover::after {
+            opacity: 1;
+            width: 100%;
+        }
+
+        .fade .text {
+            opacity: 0.35;
+            transition: opacity 0.25s ease;
+        } 
     </style>
 </head>
 <body>
@@ -85,6 +172,23 @@
         <div class="title"><strong>LIFE ON THE PAGE</strong></div>
         <div class="about"><strong>ABOUT</strong></div>
     </nav>
+
+    <section id="about-page">
+        <div class="about-grid">
+            <div class="about-text text about-main">
+                LIFE ON THE PAGE is a collection of interviews and essays by Elena Ferrante on the making of The Neapolitan Novels—the 
+                famed tetralogy tracing over sixty years of a complex, volatile, yet tender friendship between Elena Greco and Lila Cerullo.
+            </div>
+
+            <div class="about-text text about-footnote">
+                Ferrante, Elena. <em>Frantumaglia: A Writer’s Journey</em>. Translated by Ann Goldstein, Europa Editions, 2016.
+            </div>
+            
+            <div class="about-text text about-footnote">
+                Ferrante, Elena. <em>In the Margins</em>. Translated by Ann Goldstein, Europa Editions, 2022.
+            </div>
+        </div>
+    </section>
 
     <main class="grid">
         <div class="column column-1">
@@ -407,6 +511,53 @@
         imageBox2.style.left = `calc(((100% - 75px)/6)*3 + 15px*3)`; 
         imageBox2.style.backgroundImage = `url('${shuffledImages[2]}')`;
 
+
+        const aboutBtn = document.querySelector('.about');
+        const titleBtn = document.querySelector('.title');
+        const aboutPage = document.getElementById('about-page');
+        const mainPage = document.querySelector('main.grid');
+        
+        aboutBtn.addEventListener('click', () => {
+            mainPage.style.display = 'none';
+            aboutPage.style.display = 'block';
+        });
+        
+        titleBtn.addEventListener('click', () => {
+            aboutPage.style.display = 'none';
+            mainPage.style.display = 'flex';
+        });
+
+        const edgeColumns = [
+            document.querySelector('.column-1'),
+            document.querySelector('.column-6')
+        ];
+        
+        const centerColumns = [
+            document.querySelector('.column-2'),
+            document.querySelector('.column-3'),
+            document.querySelector('.column-4'),
+            document.querySelector('.column-5')
+        ];
+        
+        edgeColumns.forEach(col => {
+            col.addEventListener('mouseenter', () => {
+                centerColumns.forEach(c => c.classList.add('fade'));
+            });
+            
+            col.addEventListener('mouseleave', () => {
+                centerColumns.forEach(c => c.classList.remove('fade'));
+            });
+        });
+        
+        centerColumns.forEach(col => {
+            col.addEventListener('mouseenter', () => {
+                edgeColumns.forEach(c => c.classList.add('fade'));
+            });
+            
+            col.addEventListener('mouseleave', () => {
+                edgeColumns.forEach(c => c.classList.remove('fade'));
+            });
+        });
 </script>
 </body>
 </html>
