@@ -446,45 +446,45 @@
         
     
         const images = [
-            '1.jpg',
-            '1-1.jpg',
-            '1-2.jpg',
-            '2.jpg',
-            '2-1.jpg',
-            '2-2.jpg',
-            '3.jpg',
-            '3-1.jpg',
-            '3-2.jpg',
-            '4.jpg',
-            '5.jpg',
-            '6.jpg',
-            '7.jpg',
-            '8.jpg',
-            '8-1.jpg',
-            '8-2.jpg',
-            '9.jpg',
-            '10.jpg',
-            '11.jpg',
-            '12.jpg',
-            '13.jpg',
-            '14.jpg',
-            '15.jpg',
-            '16.jpg',
-            '17.jpg',
-            '17-1.jpg',
-            '17-2.jpg',
-            '18.jpg',
-            '19.jpg',
-            '20.jpg',
-            '21.jpg',
-            '22.jpg',
-            '23.jpg',
-            '24.jpg',
-            '25.jpg',
-            '26.jpg',
-            '27.jpg',
-            '28.jpg',
-            '29.jpg',
+            "1.jpg",
+            "1-1.jpg",
+            "1-2.jpg",
+            "2.jpg",
+            "2-1.jpg",
+            "2-2.jpg",
+            "3.jpg",
+            "3-1.jpg",
+            "3-2.jpg",
+            "4.jpg",
+            "5.jpg",
+            "6.jpg",
+            "7.jpg",
+            "8.jpg",
+            "8-1.jpg",
+            "8-2.jpg",
+            "9.jpg",
+            "10.jpg",
+            "11.jpg",
+            "12.jpg",
+            "13.jpg",
+            "14.jpg",
+            "15.jpg",
+            "16.jpg",
+            "17.jpg",
+            "17-1.jpg",
+            "17-2.jpg",
+            "18.jpg",
+            "19.jpg",
+            "20.jpg",
+            "21.jpg",
+            "22.jpg",
+            "23.jpg",
+            "24.jpg",
+            "25.jpg",
+            "26.jpg",
+            "27.jpg",
+            "28.jpg",
+            "29.jpg",
         ];
 
         function shuffle(array) {
@@ -496,66 +496,66 @@
         }
         const shuffledImages = shuffle(images.slice());
 
-        const imageBox1 = document.getElementById('image-box-1');
-        imageBox1.style.top = '311px';
+        const imageBox1 = document.getElementById("image-box-1");
+        imageBox1.style.top = "311px";
         imageBox1.style.backgroundImage = `url('${shuffledImages[0]}')`;
 
         
-        const imageBox3 = document.getElementById('image-box-3');
-        imageBox3.style.top = '495px';
+        const imageBox3 = document.getElementById("image-box-3");
+        imageBox3.style.top = "495px";
         imageBox3.style.backgroundImage = `url('${shuffledImages[1]}')`;
 
 
-        const imageBox2 = document.getElementById('image-box-2');
-        imageBox2.style.top = '135px';
+        const imageBox2 = document.getElementById("image-box-2");
+        imageBox2.style.top = "135px";
         imageBox2.style.left = `calc(((100% - 75px)/6)*3 + 15px*3)`; 
         imageBox2.style.backgroundImage = `url('${shuffledImages[2]}')`;
 
 
-        const aboutBtn = document.querySelector('.about');
-        const titleBtn = document.querySelector('.title');
-        const aboutPage = document.getElementById('about-page');
-        const mainPage = document.querySelector('main.grid');
+        const aboutBtn = document.querySelector(".about");
+        const titleBtn = document.querySelector(".title");
+        const aboutPage = document.getElementById("about-page");
+        const mainPage = document.querySelector("main.grid");
         
-        aboutBtn.addEventListener('click', () => {
-            mainPage.style.display = 'none';
-            aboutPage.style.display = 'block';
+        aboutBtn.addEventListener("click", () => {
+            mainPage.style.display = "none";
+            aboutPage.style.display = "block";
         });
         
-        titleBtn.addEventListener('click', () => {
-            aboutPage.style.display = 'none';
-            mainPage.style.display = 'flex';
+        titleBtn.addEventListener("click", () => {
+            aboutPage.style.display = "none";
+            mainPage.style.display = "flex";
         });
 
         const edgeColumns = [
-            document.querySelector('.column-1'),
-            document.querySelector('.column-6')
+            document.querySelector(".column-1"),
+            document.querySelector(".column-6")
         ];
         
         const centerColumns = [
-            document.querySelector('.column-2'),
-            document.querySelector('.column-3'),
-            document.querySelector('.column-4'),
-            document.querySelector('.column-5')
+            document.querySelector(".column-2"),
+            document.querySelector(".column-3"),
+            document.querySelector(".column-4"),
+            document.querySelector(".column-5")
         ];
         
         edgeColumns.forEach(col => {
-            col.addEventListener('mouseenter', () => {
-                centerColumns.forEach(c => c.classList.add('fade'));
+            col.addEventListener("mouseenter", () => {
+                centerColumns.forEach(c => c.classList.add("fade"));
             });
             
-            col.addEventListener('mouseleave', () => {
-                centerColumns.forEach(c => c.classList.remove('fade'));
+            col.addEventListener("mouseleave", () => {
+                centerColumns.forEach(c => c.classList.remove("fade"));
             });
         });
         
         centerColumns.forEach(col => {
-            col.addEventListener('mouseenter', () => {
-                edgeColumns.forEach(c => c.classList.add('fade'));
+            col.addEventListener("mouseenter", () => {
+                edgeColumns.forEach(c => c.classList.add("fade"));
             });
             
-            col.addEventListener('mouseleave', () => {
-                edgeColumns.forEach(c => c.classList.remove('fade'));
+            col.addEventListener("mouseleave", () => {
+                edgeColumns.forEach(c => c.classList.remove("fade"));
             });
         });
 </script>
